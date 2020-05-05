@@ -1,0 +1,1 @@
+web: gunicorn estaciona24horas37.wsgi
