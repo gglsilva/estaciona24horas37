@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Estacionamento 24 Horas</title>
+</head>
+<body>
+
+<h2>Lista de Mensalistas</h2>
+
+
+<ul>
+{% for mensalista in mensalista %}
+    <li>
+    	<a href="{% url 'core_upd_mensalista' mensalista.id %}">
+            {{ mensalista.veiculo.placa }} - R$ {{ mensalista.valor_mes }}
+        </a>
+    </li>
+{% endfor %}
+</ul>
+
+<form action="{% url 'core_add_mensalista' %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Cadastrar</button>
+</form>
+</body>
+</html>
